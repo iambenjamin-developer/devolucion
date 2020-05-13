@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+
+    @Styles.Render("~/Content/bootstrap.min.css")
+
+    @Styles.Render("~/Content/alertify.min.css")
+
+    @Scripts.Render("~/Scripts/jquery-3.4.1.min.js")
+
+</head>
+<body>
+    <!-- Links -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div id="idMenuSegunRol" class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+            @*<ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class='nav-link' href='~/Usuarios/ABM'> <i class='fas fa-users'></i> Usuarios</a>";
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="//codeply.com">Codeply</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                </ul>*@
+        </div>
+        <div class="mx-auto order-0">
+            <a class="navbar-brand mx-auto" href="#">
+                <img src="~/Images/iconos/bombilla.svg" alt="logo" style="width:30px;" />
+                <b><i> @Session["NOMBRES"] (@Session["ROL_DESCRIPCION"])</i> </b>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="~/Usuarios/CambiarClave"><i class='fas fa-key'></i> Cambiar Clave</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="~/Usuarios/Login"><i class='fas fa-sign-out-alt'></i> Cerrar Sesión </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+   
+
+    <!--
+      <nav class="navbar navbar-expand-sm bg-dark navbar-dark">   -->
+    <!-- Brand/logo -->
+    <!--
+    <a class="navbar-brand" href="#">
+        <img src="~/Images/iconos/bombilla.svg" alt="logo" style="width:30px;" />
+        <b><i>@Session["NOMBRES"]</i> </b>
+
+    </a>
+
+
+    </nav>
+
+    -->
+    <div class="container">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.ToLongDateString().ToUpper() - BENJA Application</p>
+        </footer>
+    </div>
+
+
+    @Scripts.Render("~/Scripts/bootstrap.bundle.min.js")
+    @Scripts.Render("~/Scripts/alertify.min.js")
+
+    <!--  Font Awesome -->
+    @Scripts.Render("~/Scripts/all.min.js")
+
+    <!--  Renderizar Menu -->
+    @Scripts.Render("~/Scripts/Custom/menu.js")
+
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

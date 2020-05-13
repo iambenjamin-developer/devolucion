@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "Carrito";
+
+}
+
+
+
+<input id="txtIdCliente" type="text" value="@ViewBag.idCliente" />
+<br />
+<div class="row col-sm-12">
+
+    <h4 class="col-sm-4 text-right">Pedido Nº:</h4>
+    <input id="txtIdPedido" type="text" value="@ViewBag.idPedido" readonly class="form-control col-sm-2" />
+
+    <h4 class="col-sm-4 text-right">Fecha:</h4>
+    <input id="txtFechaPedido" type="text" readonly class="form-control col-sm-2" />
+
+</div>
+<br />
+
+
+<div id="tabla-detalle-pedidos"></div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <label>Observaciones: máximo 80 caracteres</label>
+            <textarea id="txtObservaciones" class="form-control" rows="2" maxlength="80"></textarea>
+        </div>
+        <div class="col">
+            <br /><br /><br />
+            <button id="btnSeguirComprando" class="btn btn-info">Seguir comprando</button>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <button id="btnCompletarPedido" class="btn btn-success">Completar Pedido</button>
+        </div>
+        <div id="divEstado" class="col">
+            
+        </div>
+    </div>
+</div>
+
+
+<script src="~/Scripts/moment.min.js"></script>
+<script src="~/Scripts/moment-with-locales.min.js"></script>
+<script src="~/Scripts/Custom/carrito.js"></script>

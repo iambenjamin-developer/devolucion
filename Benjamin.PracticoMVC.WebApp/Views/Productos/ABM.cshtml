@@ -1,0 +1,141 @@
+﻿@{
+    ViewBag.Title = "ABM Productos";
+}
+
+<link href="~/Content/datatables.min.css" rel="stylesheet" />
+
+<h2>ABM de Productos</h2>
+
+<br />
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick="abrirModal(0)">
+    Agregar
+</button>
+
+<br />
+<br />
+
+
+@*DESDE EL SCRIPT SE GENERA UNA TABLA*@
+<div id="tabla-usuarios"></div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="tituloModal"> @*titulo*@ </h5>
+                <button id="btnCerrar" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+
+                <div class="row">
+
+                    <div class="col-lg-8">
+
+                        <table style="width:90%;margin:auto;">
+                            <tr>
+                                <td style="width:30%;margin:auto;"> <label for="recipient-name" class="col-form-label">Código:</label> </td>
+                                <td style="width:60%;margin:auto;"> <input type="text" class="form-control limpiar" id="txtCodigo" readonly> </td>
+                                <td style="width:10%;margin:auto;"> <label>  </label> </td>
+                            </tr>
+
+                            <tr>
+
+                                <td style="width:30%;margin:auto;"> <label for="recipient-name" class="col-form-label">Nombre:</label> </td>
+                                <td style="width:60%;margin:auto;"> <input type="text" class="form-control limpiar obligatorio" id="txtNombre"> </td>
+                                <td style="width:10%;margin:auto;"> <label>  </label> </td>
+                            </tr>
+
+                            <tr>
+
+                                <td style="width:30%;margin:auto;"> <label for="recipient-name" class="col-form-label">Descripción:</label> </td>
+                                <td style="width:60%;margin:auto;">  <textarea class="form-control limpiar obligatorio" id="txtDescripcion" rows="3"></textarea> </td>
+                                <td style="width:10%;margin:auto;"> <label>  </label> </td>
+                            </tr>
+
+                            <tr>
+
+                                <td style="width:30%;margin:auto;"> <label for="recipient-name" class="col-form-label">Marca:</label> </td>
+                                <td style="width:60%;margin:auto;">
+                                    <select class="form-control limpiarCbo obligatorio" id="cboMarcas">
+                                    </select>
+                                </td>
+                                <td style="width:10%;margin:auto;"> <label> @*<i class="fas fa-check"></i>*@ </label> </td>
+                            </tr>
+
+                            <tr>
+
+                                <td style="width:30%;margin:auto;"> <label for="recipient-name" class="col-form-label">Precio: $</label> </td>
+                                <td style="width:60%;margin:auto;"> <input type="number" min="0.1" step="any" class="form-control limpiar obligatorio" id="txtPrecioUnitario"> </td>
+                                <td style="width:10%;margin:auto;"> <label>  </label> </td>
+                            </tr>
+
+                            <tr>
+
+                                <td style="width:30%;margin:auto;"> <label for="recipient-name" class="col-form-label">Estado:</label> </td>
+                                <td style="width:60%;margin:auto;">
+                                    <label style="width:1rem;"></label>
+                                    <input type="checkbox" class="form-check-input" id="chkActivo">
+                                    <label class="form-check-label" for="exampleCheck1">Activo</label>
+                                </td>
+                                <td style="width:10%;margin:auto;"> <label> @*<i class="fas fa-check"></i>*@ </label> </td>
+                            </tr>
+
+
+                        </table>
+
+
+
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Imagen</span>
+                            </div>
+
+                            <div class="custom-file">
+                                <input id="imgNombreArchivo" type="file" class="custom-file-input limpiarFileInput" accept="image/*" lang="es">
+                                <label id="lblNombreArchivo" class="custom-file-label">@*Examinar...*@</label>
+                            </div>
+                        </div>
+                       
+
+                        <div  id="idRutaPadre">
+
+                            <input id="idRuta" type="text" class="form-control" readonly />
+                        </div>
+                         
+                   
+                    </div>
+
+                    <div class="col-lg-4">
+                        @*Aca renderizamos con InnerHTML la imagen de la base*@
+                        <div id="divFoto"></div>
+                    </div>
+
+                </div>
+
+
+
+
+            </div>
+            <div class="modal-footer">
+                <button id="btnCancelar" type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
+                <button id="btnAceptar" type="button" class="btn btn-outline-success" onclick="guardar()">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="~/Scripts/datatables.min.js"></script>
+<script src="~/Scripts/moment.min.js"></script>
+<script src="~/Scripts/moment-with-locales.min.js"></script>
+
+
+<script src="~/Scripts/Custom/productos.js"></script>

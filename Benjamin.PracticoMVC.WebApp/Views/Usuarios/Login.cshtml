@@ -1,0 +1,116 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+
+<!doctype html>
+<html lang="es">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="~/Images/iconos/bulb.ico">
+
+    <!-- Bootstrap CSS -->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="~/Content/alertify.min.css" rel="stylesheet" />
+
+    <link href="~/Content/themes/default.css" rel="stylesheet" />
+
+    <style>
+        body {
+            background-image: url('../../Images/wallpaper.jpg');
+            background-size: cover;
+            background-repeat: repeat-y;
+            width: auto;
+            height: 100%;
+        }
+
+
+        .centrado-porcentual {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            -webkit-transform: translate(-50%, -50%);
+        }
+    </style>
+
+    <title>IdeasTech</title>
+
+
+
+
+
+
+</head>
+<body>
+
+
+    <div class="centrado-porcentual card card-outline-secondary badge-dark col-md-4">
+
+        <div class="card-header">
+            <h3 class="mb-0" style="position:center;text-align:center">
+
+
+                <img src="~/Images/iconos/bombilla.svg" style="width:8rem;height:8rem;display:block;margin:auto;" />
+
+                <b style="font-family:Verdana, Geneva, Tahoma, sans-serif;"> IdeasTech </b>
+            </h3>
+
+        </div>
+
+
+        <div class="card-body bg-dark">
+
+            <div>
+
+
+                <label class="text-success font-weight-bold">Usuario: </label>
+
+                <input type="text" id="txtUsuario" class="form-control" />
+
+            </div>
+
+            <div>
+
+                <label class="text-success font-weight-bold">Clave: </label>
+
+                <input type="password" id="txtClave" class="form-control"  />
+            </div>
+
+            <div>
+
+
+                <p>
+                    <button id="btnLogin" class="btn btn-outline-success float-right">Iniciar Sesión</button>
+                </p>
+
+            </div>
+
+
+
+        </div>
+
+
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- bootstrap.bundle incluye a Popper -->
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+    <script src="~/Scripts/alertify.min.js"></script>
+    <script src="~/Scripts/Custom/login.js"></script>
+</body>
+</html>
+
+
+
+

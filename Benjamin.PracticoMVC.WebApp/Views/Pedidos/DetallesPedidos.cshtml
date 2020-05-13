@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "DetallesPedidos";
+}
+
+<h2 class="text-center">DetallesPedidos</h2>
+<br />
+<div class="row col-sm-12">
+
+    <h4 class="col-sm-4 text-right">Pedido Nº:</h4>
+    <input id="txtIdPedido" type="text" value="@ViewBag.idPedido" readonly class="form-control col-sm-2" />
+
+    <h4 class="col-sm-4 text-right">Cliente Nº:</h4>
+    <input id="txtIdCliente" type="text" value="@ViewBag.idCliente" readonly class="form-control col-sm-2" />
+
+
+
+    <h4 class="col-sm-4 text-right">Razon Social:</h4>
+    <input id="txtRazonSocial" type="text" readonly class="form-control col-sm-2" />
+
+    <h4 class="col-sm-4 text-right">Apellidos y Nombres:</h4>
+    <input id="txtApellidosNombres" type="text" readonly class="form-control col-sm-2" />
+
+
+    <h4 class="col-sm-4 text-right">Estado:</h4>
+    <input id="txtEstado" type="text" readonly class="form-control col-sm-2" />
+
+    <h4 class="col-sm-4 text-right">Observaciones:</h4>
+    <input id="txtObservaciones" type="text" readonly class="form-control col-sm-2" />
+
+    <h4 class="col-sm-10 text-right">Fecha:</h4>
+    <input id="txtFecha" type="text" readonly class="form-control col-sm-2" />
+
+</div>
+
+
+
+<div id="tabla-detallesPedidosPorCliente"></div>
+
+<script src="~/Scripts/moment.min.js"></script>
+<script src="~/Scripts/moment-with-locales.min.js"></script>
+<script src="~/Scripts/Custom/detallesPedidos.js"></script>

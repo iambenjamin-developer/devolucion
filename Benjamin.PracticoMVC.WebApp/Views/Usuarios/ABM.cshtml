@@ -1,0 +1,117 @@
+﻿
+@{
+    ViewBag.Title = "ABM";
+}
+
+<link href="~/Content/datatables.min.css" rel="stylesheet" />
+
+<h2>ABM de Usuarios</h2>
+
+<br />
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick="abrirModal(0)">Agregar</button>
+<br />
+<br />
+
+
+
+@*DESDE EL SCRIPT SE GENERA UNA TABLA*@
+<div id="tabla-usuarios"></div>
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="tituloModal"> <!-- Agregar/Editar  --> </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+              
+                    <table style="width:90%;margin:auto;">
+                        <tr>
+                            <td style="width:30%;margin:auto;"> <label for="recipient-name" class="col-form-label">ID:</label> </td>
+                            <td style="width:60%;margin:auto;"> <input type="text" class="form-control limpiar" id="txtID"> </td>
+                            <td style="width:10%;margin:auto;"> <label>  </label> </td>
+                        </tr>
+
+                        <tr>
+
+                            <td style="width:30%;margin:auto;"> <label for="recipient-name" class="col-form-label">Usuario:</label> </td>
+                            <td style="width:60%;margin:auto;"> <input type="text" class="form-control limpiar obligatorio" id="txtUsuario"> </td>
+                            <td style="width:10%;margin:auto;"> <label>  </label> </td>
+                        </tr>
+
+                        <tr>
+
+                            <td style="width:30%;margin:auto;"> <label for="recipient-name" class="col-form-label">Rol:</label> </td>
+                            <td style="width:60%;margin:auto;">
+                                <select class="form-control limpiarCbo obligatorio" id="cboRoles">
+                                </select>
+                            </td>
+                            <td style="width:10%;margin:auto;"> <label> @*<i class="fas fa-check"></i>*@ </label> </td>
+                        </tr>
+
+                        <tr>
+
+                            <td style="width:30%;margin:auto;"> <label for="recipient-name" class="col-form-label">Nombres:</label> </td>
+                            <td style="width:60%;margin:auto;"> <input type="text" class="form-control limpiar obligatorio" id="txtNombres"> </td>
+                            <td style="width:10%;margin:auto;"> <label>  </label> </td>
+                        </tr>
+
+                        <tr>
+
+                            <td style="width:30%;margin:auto;"> <label for="recipient-name" class="col-form-label">Apellidos:</label> </td>
+                            <td style="width:60%;margin:auto;"> <input type="text" class="form-control limpiar obligatorio" id="txtApellidos"> </td>
+                            <td style="width:10%;margin:auto;"> <label>  </label> </td>
+                        </tr>
+
+                        <tr>
+
+                            <td style="width:30%;margin:auto;"> <label for="recipient-name" class="col-form-label">Razón Social:</label> </td>
+                            <td style="width:60%;margin:auto;"> <input type="text" class="form-control limpiar obligatorio" id="txtRazonSocial"> </td>
+                            <td style="width:10%;margin:auto;"> <label>  </label> </td>
+                        </tr>
+
+
+
+                        <tr>
+
+                            <td style="width:30%;margin:auto;"> <label for="recipient-name" class="col-form-label">Estado:</label> </td>
+                            <td style="width:60%;margin:auto;">
+                                <label style="width:1rem;"></label>
+                                <input type="checkbox" class="form-check-input" id="chkEstado">
+                                <label class="form-check-label" for="exampleCheck1">Activo</label>
+                            </td>
+                            <td style="width:10%;margin:auto;"> <label> @*<i class="fas fa-check"></i>*@ </label> </td>
+                        </tr>
+
+
+                    </table>
+
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button id="btnCancelar" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button id="btnAceptar" type="button" class="btn btn-primary" onclick="guardar()">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<script src="~/Scripts/datatables.min.js"></script>
+<script src="~/Scripts/moment.min.js"></script>
+<script src="~/Scripts/moment-with-locales.min.js"></script>
+<script src="~/Scripts/Custom/usuarios.js"></script>
