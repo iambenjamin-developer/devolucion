@@ -35,18 +35,21 @@
 
         @foreach (var obj in Model)
         {
-        <tr>
-            <td>@obj.ID</td>
-            <td>@obj.USUARIO</td>
-            <td>@obj.ROL</td>
-            <td>@obj.NOMBRES</td>
-            <td>@obj.APELLIDOS</td>
-            <td>@obj.FECHA_ALTA.ToShortDateString()</td>
-            <td>@obj.ESTADO</td>
-            <td><button id="btnEditar" class="btn btn-primary" onclick="abrirModal(@obj.ID)" data-toggle="modal" data-target="#exampleModal"> <i class="fas fa-edit"></i> </button></td>
-          
+            <tr>
+                <td>@obj.ID</td>
+                <td>@obj.USUARIO</td>
+                <td>@obj.ROL</td>
+                <td>@obj.NOMBRES</td>
+                <td>@obj.APELLIDOS</td>
+                <td>@obj.FECHA_ALTA.ToShortDateString()</td>
+                <td>@obj.ESTADO</td>
+                <td>
+                    <button id="btnEditar" class="btn btn-primary" onclick="abrirModal(@obj.ID)" data-toggle="modal" data-target="#exampleModal"> <i class="fas fa-edit"></i> </button>
+                    &nbsp;<button id='btnResetClave' class='btn btn-danger' onclick='resetearClave(@obj.ID)'><i class='fas fa-key'></i></button>
+                </td>
 
-        </tr>
+
+            </tr>
 
         }
 
