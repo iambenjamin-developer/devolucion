@@ -1,4 +1,5 @@
-﻿
+﻿@model List<Benjamin.PracticoMVC.Entidades.Join_UsuariosRoles>
+
 @{
     ViewBag.Title = "ABM";
 }
@@ -15,8 +16,44 @@
 
 
 
-@*DESDE EL SCRIPT SE GENERA UNA TABLA*@
-<div id="tabla-usuarios"></div>
+@*TABLA USUARIOS LLENADA CON RAZOR*@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">USUARIO</th>
+            <th scope="col">ROL</th>
+            <th scope="col">NOMBRES</th>
+            <th scope="col">APELLIDOS</th>
+            <th scope="col">FECHA DE ALTA</th>
+            <th scope="col">ESTADO</th>
+            <th scope="col">ACCIONES</th>
+        </tr>
+    </thead>
+    <tbody>
+
+
+        @foreach (var obj in Model)
+        {
+        <tr>
+            <td>@obj.ID</td>
+            <td>@obj.USUARIO</td>
+            <td>@obj.ROL</td>
+            <td>@obj.NOMBRES</td>
+            <td>@obj.APELLIDOS</td>
+            <td>@obj.FECHA_ALTA.ToShortDateString()</td>
+            <td>@obj.ESTADO</td>
+            <td><button id="btnEditar" class="btn btn-primary" onclick="abrirModal(@obj.ID)" data-toggle="modal" data-target="#exampleModal"> <i class="fas fa-edit"></i> </button></td>
+          
+
+        </tr>
+
+        }
+
+
+
+    </tbody>
+</table>
 
 
 
@@ -31,7 +68,7 @@
             </div>
             <div class="modal-body">
                 <form>
-              
+
                     <table style="width:90%;margin:auto;">
                         <tr>
                             <td style="width:30%;margin:auto;"> <label for="recipient-name" class="col-form-label">ID:</label> </td>
@@ -105,13 +142,4 @@
 </div>
 
 
-
-
-
-
-
-
-<script src="~/Scripts/datatables.min.js"></script>
-<script src="~/Scripts/moment.min.js"></script>
-<script src="~/Scripts/moment-with-locales.min.js"></script>
-<script src="~/Scripts/Custom/usuarios.js"></script>
+<script src="~/Scripts/Custom/usuariosNuevo.js"></script>

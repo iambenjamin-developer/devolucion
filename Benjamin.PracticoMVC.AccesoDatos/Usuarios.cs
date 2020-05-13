@@ -31,7 +31,11 @@ Roles.Descripcion AS ROL,
 Nombre AS NOMBRES, 
 Apellido AS APELLIDOS, 
 FechaCreacion AS FECHA_ALTA,
-Activo AS ESTADO
+CASE
+    WHEN Activo = 1 THEN 'ACTIVO'
+    WHEN Activo = 0 THEN 'BAJA'
+    ELSE 'DESCONOCIDO'
+END AS ESTADO
 FROM Usuarios
 INNER JOIN Roles ON 
 Usuarios.IdRol = Roles.Id
@@ -46,11 +50,14 @@ Usuarios.IdRol = Roles.Id
             consultaSQL.Append("Nombre AS NOMBRES, ");
             consultaSQL.Append("Apellido AS APELLIDOS, ");
             consultaSQL.Append("FechaCreacion AS FECHA_ALTA, ");
-            consultaSQL.Append("Activo AS ESTADO ");
+            consultaSQL.Append("CASE ");
+            consultaSQL.Append("WHEN Activo = 1 THEN 'ACTIVO' ");
+            consultaSQL.Append("WHEN Activo = 0 THEN 'BAJA' ");
+            consultaSQL.Append("ELSE 'DESCONOCIDO' ");
+            consultaSQL.Append("END AS ESTADO "); 
             consultaSQL.Append("FROM Usuarios ");
             consultaSQL.Append("INNER JOIN Roles ON  ");
             consultaSQL.Append("Usuarios.IdRol = Roles.Id ");
-
 
             using (var connection = new SqlConnection(cadenaConexion))
             {

@@ -87,7 +87,7 @@ namespace Benjamin.PracticoMVC.WebApp.Controllers
                 Session["ONLINE"] = objSesion.ONLINE;
                 Session["ESTADO_PEDIDO"] = "SIN_PEDIDOS";
 
-              
+
                 //si el usuario y la clave son iguales, significa que esta blanqueada
                 //por lo cual hay q redirigirlos a cambiar contraseña
                 if (usuarioClaveIguales == true)
@@ -189,8 +189,11 @@ namespace Benjamin.PracticoMVC.WebApp.Controllers
 
         public ActionResult ABM()
         {
+            AccesoDatos.Usuarios obj = new AccesoDatos.Usuarios();
+          
+            List<Entidades.Join_UsuariosRoles> lista = obj.Listar();
 
-            return View();
+            return View(lista);
         }
 
 
@@ -235,7 +238,7 @@ namespace Benjamin.PracticoMVC.WebApp.Controllers
             //si el ID_USUARIO es cero agregar
             if (obj_Usuario_Cliente.ID_USUARIO == 0)
             {
-               AccesoDatos.Usuarios metodos = new AccesoDatos.Usuarios();
+                AccesoDatos.Usuarios metodos = new AccesoDatos.Usuarios();
 
                 retorno = metodos.Crear(obj_Usuario_Cliente);
 

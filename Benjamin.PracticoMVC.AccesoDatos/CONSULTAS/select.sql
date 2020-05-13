@@ -1,17 +1,18 @@
-﻿--UPDATE Pedidos
---SET Observacion = '(P) DEFAULT'
---WHERE NumeroPedido = 1
---SELECT COUNT(*)
---FROM Pedidos
---WHERE SUBSTRING( Pedidos.Observacion, 0, 4 ) = '(P)'
---AND CodigoCliente = 1000
-
-
-
---SELECT * FROM DetallesPedidos
-
-select * from DetallesPedidos
-where NumeroPedido = 3
+﻿SELECT  
+Usuarios.Id AS ID, 
+Usuario AS USUARIO, 
+Roles.Descripcion AS ROL, 
+Nombre AS NOMBRES, 
+Apellido AS APELLIDOS, 
+FechaCreacion AS FECHA_ALTA,
+CASE
+    WHEN Activo = 1 THEN 'ACTIVO'
+    WHEN Activo = 0 THEN 'BAJA'
+    ELSE 'DESCONOCIDO'
+END AS ESTADO
+FROM Usuarios
+INNER JOIN Roles ON 
+Usuarios.IdRol = Roles.Id
 
  --SELECT MAX(NumeroItem) 
  --               FROM DetallesPedidos
