@@ -11,11 +11,19 @@
 <div class="col-md-6">
     @using (Html.BeginForm("AgregarUsuario", "Test", FormMethod.Post, null))
     {
-        <label>
-            Rol:
-        </label>
-        @Html.DropDownList("Lista de Roles", Model.listadoRoles, "--Seleccionar--")
+        @*<label>
+                Rol:
+            </label>
+            @Html.DropDownList("Lista de Roles", Model.listadoRoles, "--Seleccionar--")
+            <br /><br />*@
 
+        @*@Html.DropDownListFor(Model => Model.Id, new SelectList(Model.listadoRoles, "Id", "Descripcion", "1"))*@
+        <br /><br />
+        <div class="form-group form-group-sm">
+            <label>Seleccionar Rol:</label>
+            @Html.DropDownListFor(Model => Model.idRolSeleccionado, Model.listadoRoles, htmlAttributes: new { @class = "form-control select2" })
+            @Html.ValidationMessageFor(Model => Model.idRolSeleccionado, "", new { @class = "input-error" })
+        </div>
 
 
         <br /><br />

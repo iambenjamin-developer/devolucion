@@ -16,5 +16,8 @@ namespace Benjamin.PracticoMVC.WebApp.Models.Test
 
         public SelectList listadoRoles { get; set; }
 
+        public string idRolSeleccionado { get; set; }
+
+
     }
 }

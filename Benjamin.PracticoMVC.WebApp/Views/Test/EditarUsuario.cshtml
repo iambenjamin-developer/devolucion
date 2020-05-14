@@ -3,56 +3,50 @@
     ViewBag.Title = "EditarUsuario";
 }
 
-<h2>Editar Usuario @ViewBag.idUsuario</h2>
+<h2> @ViewBag.idUsuario</h2>
 
 <div class="col-md-6">
-
-
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("AgregarUsuario", "Test", FormMethod.Post, null))
     {
-        <div>
-
-            @Html.LabelFor(Model => Model.ObjetoUsuario.Id)
-            @Html.EditorFor(Model => Model.ObjetoUsuario.Id, new { htmlAttributes = new { @class = "form-control" } })
 
 
+        <br /><br />
 
-            <label>Selecciones Rol: </label>
-            <select id="cboRol" name="cboRol" class="form-control">
-                @foreach (var item in Model.ListaDeRoles)
-                {
-                    <option value="@item.Id">@item.Descripcion</option>
+        @Html.LabelFor(Model => Model.ObjetoUsuarioCliente.USERNAME)
+        @Html.EditorFor(Model => Model.ObjetoUsuarioCliente.USERNAME, new
+        {
+            htmlAttributes = new { @class = "form-control" }
+        })
 
-                }
 
-            </select>
-
-            <input id="idRol" name="idRol" type="text" readonly class="form-control" />
-
-            @Html.LabelFor(Model => Model.ObjetoUsuario.Usuario)
-            @Html.EditorFor(Model => Model.ObjetoUsuario.Usuario, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.LabelFor(Model => Model.ObjetoUsuarioCliente.ID_ROL)
+        @Html.EditorFor(Model => Model.ObjetoUsuarioCliente.ID_ROL, new { htmlAttributes = new { @class = "form-control" } })
 
 
 
-            @Html.LabelFor(Model => Model.ObjetoUsuario.Nombre)
-            @Html.EditorFor(Model => Model.ObjetoUsuario.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+
+        @Html.LabelFor(Model => Model.ObjetoUsuarioCliente.NOMBRES)
+        @Html.EditorFor(Model => Model.ObjetoUsuarioCliente.NOMBRES, new { htmlAttributes = new { @class = "form-control" } })
 
 
 
-            @Html.LabelFor(Model => Model.ObjetoUsuario.Apellido)
-            @Html.EditorFor(Model => Model.ObjetoUsuario.Apellido, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.LabelFor(Model => Model.ObjetoUsuarioCliente.APELLIDOS)
+        @Html.EditorFor(Model => Model.ObjetoUsuarioCliente.APELLIDOS, new { htmlAttributes = new { @class = "form-control" } })
+
+
+        @Html.LabelFor(Model => Model.ObjetoUsuarioCliente.RAZON_SOCIAL)
+        @Html.EditorFor(Model => Model.ObjetoUsuarioCliente.RAZON_SOCIAL, new { htmlAttributes = new { @class = "form-control" } })
 
 
 
-            @Html.LabelFor(Model => Model.ObjetoUsuario.Activo)
-            @Html.EditorFor(Model => Model.ObjetoUsuario.Activo)
+        @Html.LabelFor(Model => Model.ObjetoUsuarioCliente.ACTIVO)
 
-            <br />
-            <br />
-            <input type="submit" value="Enviar" class="btn btn-outline-info" />
-        </div>
+        @Html.EditorFor(Model => Model.ObjetoUsuarioCliente.ACTIVO)
+
+
+        <br /><br />
+
+        <input type="submit" value="Enviar" class="btn btn-outline-info" />
     }
 
 </div>
-
-<script src="~/Scripts/Custom/test.js"></script>
