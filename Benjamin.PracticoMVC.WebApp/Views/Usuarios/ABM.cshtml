@@ -1,4 +1,4 @@
-﻿@model List<Benjamin.PracticoMVC.Entidades.Join_UsuariosRoles>
+﻿@model Benjamin.PracticoMVC.WebApp.Models.Usuarios.UsuariosModel
 
 @{
     ViewBag.Title = "ABM";
@@ -13,51 +13,6 @@
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick="abrirModal(0)">Agregar</button>
 <br />
 <br />
-
-
-
-@*TABLA USUARIOS LLENADA CON RAZOR*@
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th scope="col">ID</th>
-            <th scope="col">USUARIO</th>
-            <th scope="col">ROL</th>
-            <th scope="col">NOMBRES</th>
-            <th scope="col">APELLIDOS</th>
-            <th scope="col">FECHA DE ALTA</th>
-            <th scope="col">ESTADO</th>
-            <th scope="col">ACCIONES</th>
-        </tr>
-    </thead>
-    <tbody>
-
-
-        @foreach (var obj in Model)
-        {
-            <tr>
-                <td>@obj.ID</td>
-                <td>@obj.USUARIO</td>
-                <td>@obj.ROL</td>
-                <td>@obj.NOMBRES</td>
-                <td>@obj.APELLIDOS</td>
-                <td>@obj.FECHA_ALTA.ToShortDateString()</td>
-                <td>@obj.ESTADO</td>
-                <td>
-                    <button id="btnEditar" class="btn btn-primary" onclick="abrirModal(@obj.ID)" data-toggle="modal" data-target="#exampleModal"> <i class="fas fa-edit"></i> </button>
-                    &nbsp;<button id='btnResetClave' class='btn btn-danger' onclick='resetearClave(@obj.ID)'><i class='fas fa-key'></i></button>
-                </td>
-
-
-            </tr>
-
-        }
-
-
-
-    </tbody>
-</table>
-
 
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -143,6 +98,52 @@
         </div>
     </div>
 </div>
+
+
+
+@*TABLA USUARIOS LLENADA CON RAZOR*@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">USUARIO</th>
+            <th scope="col">ROL</th>
+            <th scope="col">NOMBRES</th>
+            <th scope="col">APELLIDOS</th>
+            <th scope="col">FECHA DE ALTA</th>
+            <th scope="col">ESTADO</th>
+            <th scope="col">ACCIONES</th>
+        </tr>
+    </thead>
+    <tbody>
+
+
+        @foreach (var obj in Model.ListaDeUsuarios)
+        {
+            <tr>
+                <td>@obj.ID</td>
+                <td>@obj.USUARIO</td>
+                <td>@obj.ROL</td>
+                <td>@obj.NOMBRES</td>
+                <td>@obj.APELLIDOS</td>
+                <td>@obj.FECHA_ALTA.ToShortDateString()</td>
+                <td>@obj.ESTADO</td>
+                <td>
+                    <button id="btnEditar" class="btn btn-primary" onclick="abrirModal(@obj.ID)" data-toggle="modal" data-target="#exampleModal"> <i class="fas fa-edit"></i> </button>
+                    &nbsp;<button id='btnResetClave' class='btn btn-danger' onclick='resetearClave(@obj.ID)'><i class='fas fa-key'></i></button>
+                </td>
+
+
+            </tr>
+
+        }
+
+
+
+    </tbody>
+</table>
+
+
 
 
 <script src="~/Scripts/Custom/usuariosNuevo.js"></script>

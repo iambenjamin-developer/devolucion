@@ -1,0 +1,20 @@
+﻿@model Benjamin.PracticoMVC.Entidades.Usuarios
+@{
+    ViewBag.Title = "ObtenerPersonas";
+}
+
+<h2>ObtenerPersonas</h2>
+
+@using (Html.BeginForm())
+{ 
+<div>
+    @Html.LabelFor(Model => Model.Nombre)
+    @Html.EditorFor(Model => Model.Nombre)
+
+    @Html.LabelFor(Model => Model.Id)
+    @Html.EditorFor(Model => Model.Id)
+
+    <input type="submit" value="Enviar" />
+</div>  
+}
+

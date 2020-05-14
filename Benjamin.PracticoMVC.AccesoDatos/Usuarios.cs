@@ -54,7 +54,7 @@ Usuarios.IdRol = Roles.Id
             consultaSQL.Append("WHEN Activo = 1 THEN 'ACTIVO' ");
             consultaSQL.Append("WHEN Activo = 0 THEN 'BAJA' ");
             consultaSQL.Append("ELSE 'DESCONOCIDO' ");
-            consultaSQL.Append("END AS ESTADO "); 
+            consultaSQL.Append("END AS ESTADO ");
             consultaSQL.Append("FROM Usuarios ");
             consultaSQL.Append("INNER JOIN Roles ON  ");
             consultaSQL.Append("Usuarios.IdRol = Roles.Id ");
@@ -134,6 +134,115 @@ WHERE Usuarios.Id = 4
 
 
         public int Crear(Entidades.Join_UsuariosClientes obj)
+        {
+
+
+            int filasAfectadas = 0;
+
+            SqlConnection conexion = new SqlConnection(cadenaConexion);
+
+
+            conexion.Open();
+
+            //como vamos a realizar dos inserciones debemos hacerlo con una transaccion
+            var transaccion = conexion.BeginTransaction();
+
+
+            try
+            {
+                //Cuando se crea por primera vez el usuario y la contraseña son las mismas 
+                //asi en el proximo login pide cambiarla
+                string clave = obj.USERNAME;
+
+                //generamos password salt para guardar en la base
+                string claveSalt = GenerarPasswordSalt(clave);
+
+                //generamos Password hash ya encriptada, para que solo el usuario sepa la password
+                string claveHash = GenerarPasswordHash(clave, claveSalt);
+
+
+                //primer consulta que inserta un nuevo usuario admin o cliente
+                StringBuilder consultaSQL1 = new StringBuilder();
+                consultaSQL1.Append("INSERT INTO Usuarios(IdRol, Usuario, Nombre, Apellido, Password, PasswordSalt, FechaCreacion, Activo)  ");
+                consultaSQL1.Append("VALUES(@IdRol, @Usuario, @Nombre, @Apellido, @Password, @PasswordSalt, @FechaCreacion, @Activo); ");
+
+
+                filasAfectadas = conexion.Execute(consultaSQL1.ToString(),
+                       new
+                       {
+                           IdRol = obj.ID_ROL,
+                           Usuario = obj.USERNAME,
+                           Nombre = obj.NOMBRES,
+                           Apellido = obj.APELLIDOS,
+                           Password = claveHash,
+                           PasswordSalt = claveSalt,
+                           FechaCreacion = DateTime.Now,
+                           Activo = obj.ACTIVO
+                       }
+                       , transaction: transaccion);
+
+
+                //solamente si el usuario es de rol cliente se realiza esta operacion extra
+                if (obj.ID_ROL == "CLI")
+                {
+
+                    /////////////////////////////
+
+                    StringBuilder consultaSQL2 = new StringBuilder();
+
+                    //obtenemos el id usuario segun el username,
+                    //este dato nos servirá luego para insertarlo en la tabla clientes
+                    consultaSQL2.Append("SELECT Id FROM Usuarios ");
+                    consultaSQL2.Append("WHERE Usuario LIKE @UsernameParametro ");
+
+
+                    obj.ID_USUARIO = conexion.ExecuteScalar<int>(consultaSQL2.ToString(), new { UsernameParametro = obj.USERNAME }, transaction: transaccion);
+
+
+                    /////////////////////////////////
+                    //insertamos nuevo cliente, relacionado con el idusuario de la tabla usuarios
+                    StringBuilder consultaSQL3 = new StringBuilder();
+                    consultaSQL3.Append("INSERT INTO Clientes(RazonSocial, FechaCreacion, IdUsuario)  ");
+                    consultaSQL3.Append("VALUES (@RazonSocialParametro, @FechaCreacionParametro, @IdUsuarioParametro )  ");
+
+
+                    filasAfectadas = conexion.Execute(consultaSQL3.ToString(),
+                           new
+                           {
+                               RazonSocialParametro = obj.RAZON_SOCIAL,
+                               IdUsuarioParametro = obj.ID_USUARIO,
+                               FechaCreacionParametro = DateTime.Now,
+
+                           },
+                           transaction: transaccion);
+                }
+
+
+
+                /////////////////////////////////
+                // si las operaciones relacionadas salieron bien, se realiza un commit
+                transaccion.Commit();
+            }
+            catch (Exception ex)
+            {
+                // en caso que haya un error en el medio de la funcion
+                //lanzamos codigo de error 0 y realizamos un rollback para que los datos
+                //no se reflejen en la base de datos
+                filasAfectadas = 0;
+                transaccion.Rollback();
+
+            }
+            finally
+            {
+                //si el procedimiento salio bien o mal, siempre se debe cerrar la conexion
+                conexion.Close();
+            }
+
+            // si el resultado de filasafectadas es 1 es porque salio OK
+            return filasAfectadas;
+        }
+
+        public int CrearUsuarioCliente(Entidades.Join_UsuariosClientes obj)
         {
 
 
@@ -683,7 +792,7 @@ WHERE ID = 11
 
             try
             {
-             
+
 
 
                 //primer consulta que inserta un nuevo usuario admin o cliente
@@ -694,8 +803,8 @@ WHERE ID = 11
                 consultaSQL1.Append("Nombre = @nombreParametro, Apellido = @apellidoParametro, ");
                 consultaSQL1.Append("Activo = @activoParametro ");
                 consultaSQL1.Append("WHERE ID = @idParametro ");
-              
-               
+
+
 
                 filasAfectadas = conexion.Execute(consultaSQL1.ToString(),
                        new

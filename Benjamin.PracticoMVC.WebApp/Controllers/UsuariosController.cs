@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Benjamin.PracticoMVC.WebApp.Models.Usuarios;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -159,7 +160,7 @@ namespace Benjamin.PracticoMVC.WebApp.Controllers
         public string ObtenerIdRol()
         {
             string idRol = string.Empty;
-            idRol = Session["ID_ROL"].ToString();
+         //   idRol = Session["ID_ROL"].ToString();
             return idRol;
         }
 
@@ -193,7 +194,11 @@ namespace Benjamin.PracticoMVC.WebApp.Controllers
           
             List<Entidades.Join_UsuariosRoles> lista = obj.Listar();
 
-            return View(lista);
+            var model = new WebApp.Models.Usuarios.UsuariosModel();
+
+            model.ListaDeUsuarios = lista;
+
+            return View(model);
         }
 
 
@@ -230,7 +235,9 @@ namespace Benjamin.PracticoMVC.WebApp.Controllers
 
 
         public int Guardar(Entidades.Join_UsuariosClientes obj_Usuario_Cliente)
-        {
+        {// deberia recibir un modelo
+
+           //html form de razor
             int retorno = -1;
 
 

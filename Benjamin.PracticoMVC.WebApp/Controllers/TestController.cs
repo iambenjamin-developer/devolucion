@@ -9,42 +9,69 @@ namespace Benjamin.PracticoMVC.WebApp.Controllers
 {
     public class TestController : Controller
     {
-        // GET: Test
-        public ActionResult Index()
+
+        public ActionResult TablaUsuarios()
         {
 
-            //using (var transaccion = new TransactionScope())
-            //{ 
-            
-            
-            
-            //}
-                return View();
+
+            AccesoDatos.Test metodos = new AccesoDatos.Test();
+
+            List<Entidades.Join_UsuariosRoles> listaUyR = metodos.ListarUsuariosRoles();
+
+            var model = new Models.Test.TestModel();
+
+            model.ListaDeUsuariosyRoles = listaUyR;
+
+            return View(model);
 
         }
 
+        [HttpGet]
+        public ActionResult AgregarUsuario()
+        {
+            AccesoDatos.Test metodos = new AccesoDatos.Test();
 
-        public int VerPOST(Entidades.Clientes objCliente)
+            IList<Entidades.Roles> roles = metodos.ListaDeRoles();
+
+            SelectList listaRoles = new SelectList(roles, "Id", "Descripcion");
+
+
+            var model = new Models.Test.TestModel();
+
+            model.listadoRoles = listaRoles;
+
+            return View(model);
+        }
+        [HttpPost]
+        public void AgregarUsuario(Models.Test.TestModel model)
         {
 
-            int r = 777;
+
+            Entidades.Join_UsuariosClientes obj = model.ObjetoUsuarioCliente;
+
+            AccesoDatos.Usuarios metodos = new AccesoDatos.Usuarios();
+
+            int filasAfectadas = metodos.CrearUsuarioCliente(obj);
 
 
-
-
-            return r;
-        
-
+            if (filasAfectadas == 1)
+            {
+                TablaUsuarios();
+            }
 
         }
 
-        public int Totem(string parametro1)
+        public ActionResult EditarUsuario(int idUsuario)
         {
+            string editar = "Editar Usuario Nº " + idUsuario.ToString();
+            ViewBag.idUsuario = editar;
 
-          //  string completo = parametro1 + parametro2;
+            return View();
+        }
 
-            return 777;
-        
+        public ActionResult test()
+        {
+            return View();
         }
 
     }

@@ -121,15 +121,19 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\MarcasController.cs" />
     <Compile Include="Controllers\PedidosController.cs" />
     <Compile Include="Controllers\ProductosController.cs" />
+    <Compile Include="Controllers\PruebaController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Test\TestModel.cs" />
+    <Compile Include="Models\Usuarios\UsuariosModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -202,7 +206,8 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\Custom\" />
     <Folder Include="Images\productos\" />
-    <Folder Include="Models\" />
+    <Folder Include="Models\Prueba\" />
+    <Folder Include="Views\Default\" />
     <Folder Include="Views\Marcas\" />
     <Folder Include="Views\Roles\" />
   </ItemGroup>
@@ -224,6 +229,12 @@
     <Content Include="Views\Pedidos\PedidosClientes.cshtml" />
     <Content Include="Views\Pedidos\DetallesPedidos.cshtml" />
     <Content Include="Views\Pedidos\RedireccionarMiPedidoPendiente.cshtml" />
+    <Content Include="Views\Prueba\Index.cshtml" />
+    <Content Include="Views\Prueba\ObtenerPersonas.cshtml" />
+    <Content Include="Views\Test\TablaUsuarios.cshtml" />
+    <Content Include="Views\Test\AgregarUsuario.cshtml" />
+    <Content Include="Views\Test\EditarUsuario.cshtml" />
+    <Content Include="Views\Test\test.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Benjamin.PracticoMVC.AccesoDatos\Benjamin.PracticoMVC.AccesoDatos.csproj">

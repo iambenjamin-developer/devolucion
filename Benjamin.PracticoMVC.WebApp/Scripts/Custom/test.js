@@ -1,10 +1,18 @@
-﻿
+﻿var idSeleccionado = document.getElementById("cboRol").value;
 
-alertify.confirm('Productos', //titulo
-    '¿Desea Guardar cambios?', //mensaje
-    function () { //cuando se presiona OK
-     alertify.error("OK") 
-    },
-    function () {//cuando se presiona Cancel
-        alertify.error("Cancel") 
-    }); 
+document.getElementById("txtIdRol").value = idSeleccionado;
+
+document.getElementById("txtIdRol").style.display = "none";
+
+function obtenerIdUsuario(id) {
+
+    alertify.success("ID: " + id.toString());
+
+}
+
+
+$('#cboRol').change(function () {
+    /* Obtener el valor de tus dropdownlist */
+    var selectedId = $(this).val();
+    document.getElementById("txtIdRol").value = selectedId;
+});

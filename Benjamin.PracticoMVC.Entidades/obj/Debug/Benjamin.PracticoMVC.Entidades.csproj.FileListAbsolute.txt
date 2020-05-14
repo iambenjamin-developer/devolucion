@@ -3,3 +3,7 @@ Z:\PRACTICO\Benjamin.PracticoMVC\Benjamin.PracticoMVC.Entidades\bin\Debug\Benjam
 Z:\PRACTICO\Benjamin.PracticoMVC\Benjamin.PracticoMVC.Entidades\obj\Debug\Benjamin.PracticoMVC.Entidades.csprojAssemblyReference.cache
 Z:\PRACTICO\Benjamin.PracticoMVC\Benjamin.PracticoMVC.Entidades\obj\Debug\Benjamin.PracticoMVC.Entidades.dll
 Z:\PRACTICO\Benjamin.PracticoMVC\Benjamin.PracticoMVC.Entidades\obj\Debug\Benjamin.PracticoMVC.Entidades.pdb
+Z:\DEVOLUCION\Benjamin.PracticoMVC-master\Benjamin.PracticoMVC.Entidades\bin\Debug\Benjamin.PracticoMVC.Entidades.dll
+Z:\DEVOLUCION\Benjamin.PracticoMVC-master\Benjamin.PracticoMVC.Entidades\bin\Debug\Benjamin.PracticoMVC.Entidades.pdb
+Z:\DEVOLUCION\Benjamin.PracticoMVC-master\Benjamin.PracticoMVC.Entidades\obj\Debug\Benjamin.PracticoMVC.Entidades.dll
+Z:\DEVOLUCION\Benjamin.PracticoMVC-master\Benjamin.PracticoMVC.Entidades\obj\Debug\Benjamin.PracticoMVC.Entidades.pdb

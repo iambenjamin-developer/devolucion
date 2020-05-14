@@ -1,0 +1,58 @@
+﻿@model Benjamin.PracticoMVC.WebApp.Models.Test.TestModel
+@{
+    ViewBag.Title = "EditarUsuario";
+}
+
+<h2>Editar Usuario @ViewBag.idUsuario</h2>
+
+<div class="col-md-6">
+
+
+    @using (Html.BeginForm())
+    {
+        <div>
+
+            @Html.LabelFor(Model => Model.ObjetoUsuario.Id)
+            @Html.EditorFor(Model => Model.ObjetoUsuario.Id, new { htmlAttributes = new { @class = "form-control" } })
+
+
+
+            <label>Selecciones Rol: </label>
+            <select id="cboRol" name="cboRol" class="form-control">
+                @foreach (var item in Model.ListaDeRoles)
+                {
+                    <option value="@item.Id">@item.Descripcion</option>
+
+                }
+
+            </select>
+
+            <input id="idRol" name="idRol" type="text" readonly class="form-control" />
+
+            @Html.LabelFor(Model => Model.ObjetoUsuario.Usuario)
+            @Html.EditorFor(Model => Model.ObjetoUsuario.Usuario, new { htmlAttributes = new { @class = "form-control" } })
+
+
+
+            @Html.LabelFor(Model => Model.ObjetoUsuario.Nombre)
+            @Html.EditorFor(Model => Model.ObjetoUsuario.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+
+
+
+            @Html.LabelFor(Model => Model.ObjetoUsuario.Apellido)
+            @Html.EditorFor(Model => Model.ObjetoUsuario.Apellido, new { htmlAttributes = new { @class = "form-control" } })
+
+
+
+            @Html.LabelFor(Model => Model.ObjetoUsuario.Activo)
+            @Html.EditorFor(Model => Model.ObjetoUsuario.Activo)
+
+            <br />
+            <br />
+            <input type="submit" value="Enviar" class="btn btn-outline-info" />
+        </div>
+    }
+
+</div>
+
+<script src="~/Scripts/Custom/test.js"></script>
