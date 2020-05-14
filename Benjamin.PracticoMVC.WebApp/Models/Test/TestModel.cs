@@ -19,5 +19,7 @@ namespace Benjamin.PracticoMVC.WebApp.Models.Test
         public string idRolSeleccionado { get; set; }
 
 
+        public string Mensaje { get; set; }
+
     }
 }

@@ -6,11 +6,16 @@
 <h2> @ViewBag.idUsuario</h2>
 
 <div class="col-md-6">
-    @using (Html.BeginForm("AgregarUsuario", "Test", FormMethod.Post, null))
+    @using (Html.BeginForm("EditarUsuario", "Test", FormMethod.Post, null))
     {
 
 
         <br /><br />
+
+        @Html.LabelFor(Model => Model.ObjetoUsuarioCliente.ID_USUARIO)
+        @Html.EditorFor(Model => Model.ObjetoUsuarioCliente.ID_USUARIO, new { htmlAttributes = new { @class = "form-control" } })
+
+
 
         @Html.LabelFor(Model => Model.ObjetoUsuarioCliente.USERNAME)
         @Html.EditorFor(Model => Model.ObjetoUsuarioCliente.USERNAME, new

@@ -57,10 +57,12 @@ namespace Benjamin.PracticoMVC.WebApp.Controllers
 
 
             return RedirectToAction("TablaUsuarios", "Test");
-
-
+            //string mensaje = "agerrgador";
+            ////boostrap alert
+            //TablaUsuarios(mensaje);
         }
 
+        [HttpGet]
         public ActionResult EditarUsuario(int idUsuario)
         {
             string editar = "Editar Usuario Nº " + idUsuario.ToString();
@@ -78,6 +80,13 @@ namespace Benjamin.PracticoMVC.WebApp.Controllers
 
             return View(model);
         }
+
+        [HttpPost]
+        public ActionResult EditarUsuario(Models.Test.TestModel model)
+        {
+            return View();
+        }
+
 
         public ActionResult test()
         {
