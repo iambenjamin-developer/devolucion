@@ -5,7 +5,17 @@
 
 <h2>Tabla Usuarios</h2>
 
-<h2>@Model.Mensaje </h2>
+@if (Model.Mensaje != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>@Model.Mensaje</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+}
+
 
 <button id="btnAgregar" name="btnAgregar" class="btn btn-outline-info">@Html.ActionLink("Agregar Usuario", "AgregarUsuario")</button>
 <br />
