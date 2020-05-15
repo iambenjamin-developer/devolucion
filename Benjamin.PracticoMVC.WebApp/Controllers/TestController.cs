@@ -80,20 +80,31 @@ namespace Benjamin.PracticoMVC.WebApp.Controllers
         [HttpGet]
         public ActionResult EditarUsuario(int idUsuario)
         {
-            string editar = "Editar Usuario Nº " + idUsuario.ToString();
-            ViewBag.idUsuario = editar;
-
-
-            AccesoDatos.Usuarios metodos = new AccesoDatos.Usuarios();
-
-            var userSeleccionado = metodos.Detalle(idUsuario);
 
             var model = new Models.Test.TestModel();
+         
+            AccesoDatos.Usuarios servicioUsuario = new AccesoDatos.Usuarios();
+
+            var userSeleccionado = servicioUsuario.Detalle(idUsuario);
 
             model.ObjetoUsuarioCliente = userSeleccionado;
 
+            AccesoDatos.Test metodos = new AccesoDatos.Test();
+
+            IList<Entidades.Roles> roles = metodos.ListaDeRoles();
+
+            SelectList listaRoles = new SelectList(roles, "Id", "Descripcion", userSeleccionado.ID_ROL);
+
+
+            model.listadoRoles = listaRoles;
 
             return View(model);
+
+
+            //IList<Sexo> sexos = ServicioValorDominio.BuscarTodosSexos();
+            //SelectList listaSexos = new SelectList(sexos, "IdValorDominio", "Descripcion", persona.Sexo.IdValorDominio);
+
+
         }
 
         [HttpPost]
