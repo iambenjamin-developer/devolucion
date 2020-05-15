@@ -4,7 +4,9 @@
 }
 
 <h2>Tabla Usuarios</h2>
-@*<h2>Mensaje de alerta: @ViewBag.MensajeDeAlerta</h2>*@
+
+<h2>@Model.Mensaje </h2>
+
 <button id="btnAgregar" name="btnAgregar" class="btn btn-outline-info">@Html.ActionLink("Agregar Usuario", "AgregarUsuario")</button>
 <br />
 <br />
@@ -37,7 +39,7 @@
                 <td>@obj.FECHA_ALTA.ToShortDateString()</td>
                 <td>@obj.ESTADO</td>
                 <td>
-                    <button id="btnEditar" name="btnEditar" class="btn btn-outline-info" > @Html.ActionLink("Editar", "EditarUsuario", "Test", new { idUsuario = obj.ID }, null) </button>
+                    <button id="btnEditar" name="btnEditar" class="btn btn-outline-info"> @Html.ActionLink("Editar", "EditarUsuario", "Test", new { idUsuario = obj.ID }, null) </button>
                     &nbsp;<button id='btnResetClave' class='btn btn-danger' onclick='resetearClave(@obj.ID)'><i class='fas fa-key'></i></button>
                 </td>
 

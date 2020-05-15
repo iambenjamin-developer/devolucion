@@ -10,17 +10,27 @@ namespace Benjamin.PracticoMVC.WebApp.Controllers
     public class TestController : Controller
     {
 
-        public ActionResult TablaUsuarios()
+        public ActionResult TablaUsuarios(Models.Test.TestModel modelParametro)
         {
+            var model = new Models.Test.TestModel();
+
+            string msj = string.Empty;
+            if (modelParametro.Mensaje == null)
+            {
+                msj = "modelo.Mensaje nulo";
+            }
+            else {
+                msj = "modelo parametro con datos";
+                model.Mensaje = modelParametro.Mensaje;
+            }
 
 
             AccesoDatos.Test metodos = new AccesoDatos.Test();
 
             List<Entidades.Join_UsuariosRoles> listaUyR = metodos.ListarUsuariosRoles();
 
-            var model = new Models.Test.TestModel();
-
             
+
             model.ListaDeUsuariosyRoles = listaUyR;
 
             return View(model);
@@ -56,19 +66,15 @@ namespace Benjamin.PracticoMVC.WebApp.Controllers
 
             int filasAfectadas = metodos.CrearUsuarioCliente(obj);
 
-            model.Mensaje = "Se agregó el usuario correctamente!";
-
-            ViewBag.MensajeDeAlerta = "la pato dene";
-
-            // return View("VistaMensaje", model);
-
-            //return View()
-            // return RedirectToAction("TablaUsuarios", new { mensaje = model.Mensaje });
-
-            return View("TablaUsuarios");
-            //return View(model);
-            //////boostrap alert
+            // ViewBag.MensajeDeAlerta = "para barrio alertifty!";
+            model.Mensaje = "usuario agregado con exito!!!!!";
+           // ViewData["Message"] = "Success";
+            return RedirectToAction("TablaUsuarios", "Test", model);
+            //string mensaje = "agerrgador";
+            ////boostrap alert
             //TablaUsuarios(mensaje);
+
+          //  return View("TablaUsuarios");
         }
 
         [HttpGet]
