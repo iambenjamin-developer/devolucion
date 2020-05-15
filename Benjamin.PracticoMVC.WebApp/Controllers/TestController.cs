@@ -10,7 +10,7 @@ namespace Benjamin.PracticoMVC.WebApp.Controllers
     public class TestController : Controller
     {
 
-        public ActionResult TablaUsuarios()
+        public ActionResult TablaUsuarios(string mensaje)
         {
 
 
@@ -55,10 +55,14 @@ namespace Benjamin.PracticoMVC.WebApp.Controllers
 
             int filasAfectadas = metodos.CrearUsuarioCliente(obj);
 
+            string msj = "agarrador";
 
-            return RedirectToAction("TablaUsuarios", "Test");
-            //string mensaje = "agerrgador";
-            ////boostrap alert
+            //  return RedirectToAction("TablaUsuarios", "Test");
+            return RedirectToAction("TablaUsuarios", new { mensaje = msj });
+
+            
+
+            //////boostrap alert
             //TablaUsuarios(mensaje);
         }
 
