@@ -235,6 +235,7 @@
     <Content Include="Views\Test\AgregarUsuario.cshtml" />
     <Content Include="Views\Test\EditarUsuario.cshtml" />
     <Content Include="Views\Test\test.cshtml" />
+    <Content Include="Views\Test\VistaMensaje.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Benjamin.PracticoMVC.AccesoDatos\Benjamin.PracticoMVC.AccesoDatos.csproj">

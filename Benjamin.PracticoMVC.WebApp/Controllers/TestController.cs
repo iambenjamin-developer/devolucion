@@ -10,7 +10,7 @@ namespace Benjamin.PracticoMVC.WebApp.Controllers
     public class TestController : Controller
     {
 
-        public ActionResult TablaUsuarios(string mensaje)
+        public ActionResult TablaUsuarios()
         {
 
 
@@ -20,6 +20,7 @@ namespace Benjamin.PracticoMVC.WebApp.Controllers
 
             var model = new Models.Test.TestModel();
 
+            
             model.ListaDeUsuariosyRoles = listaUyR;
 
             return View(model);
@@ -55,13 +56,17 @@ namespace Benjamin.PracticoMVC.WebApp.Controllers
 
             int filasAfectadas = metodos.CrearUsuarioCliente(obj);
 
-            string msj = "agarrador";
+            model.Mensaje = "Se agregó el usuario correctamente!";
 
-            //  return RedirectToAction("TablaUsuarios", "Test");
-            return RedirectToAction("TablaUsuarios", new { mensaje = msj });
+            ViewBag.MensajeDeAlerta = "la pato dene";
 
-            
+            // return View("VistaMensaje", model);
 
+            //return View()
+            // return RedirectToAction("TablaUsuarios", new { mensaje = model.Mensaje });
+
+            return View("TablaUsuarios");
+            //return View(model);
             //////boostrap alert
             //TablaUsuarios(mensaje);
         }
