@@ -53,6 +53,7 @@ namespace Benjamin.PracticoMVC.WebApp.Controllers
 
             return View(model);
         }
+       
         [HttpPost]
         public ActionResult AgregarUsuario(Models.Test.TestModel model)
         {
@@ -110,7 +111,17 @@ namespace Benjamin.PracticoMVC.WebApp.Controllers
         [HttpPost]
         public ActionResult EditarUsuario(Models.Test.TestModel model)
         {
-            return View();
+            Entidades.Join_UsuariosClientes obj = model.ObjetoUsuarioCliente;
+
+            obj.ID_ROL = model.idRolSeleccionado;
+
+            AccesoDatos.Usuarios metodos = new AccesoDatos.Usuarios();
+
+            int filasAfectadas = metodos.Editar(obj);
+
+            model.Mensaje = "usuario editado con exito!!!!!";
+
+            return RedirectToAction("TablaUsuarios", "Test", model);
         }
 
 
