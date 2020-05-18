@@ -1,0 +1,70 @@
+﻿@model Benjamin.PracticoMVC.WebApp.Models.Test.TestModel
+@{
+    ViewBag.Title = "List";
+}
+
+
+<h2>Listar</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            <label>NOMBRE</label>
+
+        </th>
+        <th>
+            <label>CONTRASEÑA</label>
+        </th>
+        <th>
+            <label>ACTIVO</label>
+        </th>
+        <th>
+            <label>FECHA DE NACIMIENTO</label>
+        </th>
+        <th>
+            <label>EDAD</label>
+        </th>
+        <th>
+            <label>PRECIO</label>
+        </th>
+        <th>
+            <label>ACCIONES</label>
+
+        </th>
+    </tr>
+
+    @foreach (var item in Model.)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pass)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Activo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaNacimiento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Edad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Precio)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+
+            </td>
+        </tr>
+    }
+
+</table>
+

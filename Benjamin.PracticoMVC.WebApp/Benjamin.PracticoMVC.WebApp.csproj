@@ -128,6 +128,7 @@
     <Compile Include="Controllers\PruebaController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -235,6 +236,7 @@
     <Content Include="Views\Test\AgregarUsuario.cshtml" />
     <Content Include="Views\Test\EditarUsuario.cshtml" />
     <Content Include="Views\Test\test.cshtml" />
+    <Content Include="Views\User\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Benjamin.PracticoMVC.AccesoDatos\Benjamin.PracticoMVC.AccesoDatos.csproj">
